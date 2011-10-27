@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Backbone Demo: Todos</title>
+    <link href="/main.css" media="all" rel="stylesheet" type="text/css"/>
+    <script data-main="/main" src="/require.js"></script>
+</head>
+<body>
+    
+    <div id="wrapper">
+        
+        <div id="left_col">
+            <div>
+                Last Saved:<br/>
+                <span id="last_saved_date"></span>
+            </div>
+            
+            <div>
+                Last Published:<br/>
+                <span id="last_published_date"></span>
+            </div>
+        </div>
+        
+        <div id="edit_form">
+            <div id="actions_bar">
+                <span class="action_buttons">
+                    <button id="preview">Preview</button>
+                    <button id="publish">Publish</button>
+                </span>
+            </div>
+            
+            <input type="text" name="title" id="article_title" value=""/>
+            <textarea name="content" id="article_content"></textarea>
+        </div>
+        
+    </div>
+</body>
+</html>

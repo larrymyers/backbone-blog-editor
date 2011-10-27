@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, Arial, Verdana, sans-serif;
+    font-size: 13px;
+    line-height: 1.4em;
+    color: #333333;
+    background-color: #ffffff;
+}
+
+#wrapper {
+    margin: 20px;
+}
+
+#left_col {
+    float: left;
+    width: 200px;
+}
+
+#left_col div {
+    margin-top: 10px;
+}
+
+#edit_form {
+    width: 617px;
+    margin-left: 220px;
+    text-align: right;
+}
+
+#actions_bar {
+    margin-bottom: 20px;
+}
+
+input, textarea {
+    display: block;
+    width: 600px;
+}
+
+#article_title {
+    font-size: 1.2em;
+    padding: 5px;
+}
+
+#article_content {
+    margin: 20px 0;
+    padding: 7px;
+    height: 600px;
+    font-size: 13px;
+}
