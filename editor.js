@@ -42,14 +42,12 @@
         },
         
         preview: function() {
-            
+            new ArticlePreview({ model: this.model }).render();
         },
         
         publish: function() {
             
         },
-        
-        autoSaveId: null,
         
         autoSave: function() {
             var self = this;
@@ -69,6 +67,16 @@
         editArticle: function(model) {
             this.model = model;
             this.render();
+        }
+    });
+    
+    var ArticlePreview = Backbone.View.extend({
+        
+        render: function() {
+            var converter = new Showdown.converter();
+            var html = converter.makeHtml(this.model.get('content'));
+            
+            $('body').append(html);
         }
     });
     
