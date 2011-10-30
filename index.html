@@ -9,16 +9,10 @@
     
     <div id="wrapper">
         
-        <div id="left_col">
-            <div>
-                Last Saved:<br/>
-                <span id="last_saved_date"></span>
-            </div>
-            
-            <div>
-                Last Published:<br/>
-                <span id="last_published_date"></span>
-            </div>
+        <div class="left_col">
+            <button id="new_article">New Article</button>
+            <ul id="articles_list">
+            </ul>
         </div>
         
         <div id="edit_form">
@@ -29,8 +23,8 @@
                 </span>
             </div>
             
-            <input type="text" name="title" id="article_title" value=""/>
-            <textarea name="content" id="article_content"></textarea>
+            <input type="text" id="article_title" value=""/>
+            <textarea id="article_content"></textarea>
         </div>
         
     </div>

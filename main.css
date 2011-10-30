@@ -12,13 +12,14 @@ body {
     margin: 20px;
 }
 
-#left_col {
+.left_col {
     float: left;
     width: 200px;
+    overflow: hidden;
 }
 
-#left_col div {
-    margin-top: 10px;
+#articles_list li {
+    cursor: pointer;
 }
 
 #edit_form {
