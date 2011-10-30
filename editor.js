@@ -26,7 +26,9 @@
         
         events: {
             'keypress #article_title': 'autoSave',
-            'keypress #article_content': 'autoSave'
+            'keypress #article_content': 'autoSave',
+            'click #preview': 'preview',
+            'click #publish': 'publish'
         },
         
         initialize: function(options) {
@@ -37,6 +39,14 @@
         render: function() {
             this.$('#article_title').val(this.model.get('title'));
             this.$('#article_content').val(this.model.get('content'));
+        },
+        
+        preview: function() {
+            
+        },
+        
+        publish: function() {
+            
         },
         
         autoSaveId: null,
