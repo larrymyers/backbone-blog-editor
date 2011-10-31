@@ -73,8 +73,11 @@
     var ArticlePreview = Backbone.View.extend({
         
         initialize: function(options) {
-            $(this.el).addClass('modal');
-            this.shadow = $(this.make('div', { class: 'shadow' }));
+            var self = this;
+            
+            $(self.el).addClass('modal');
+            self.shadow = $(self.make('div', { class: 'shadow' }));
+            self.shadow.click(_.bind(self.destroy, self));
         },
         
         render: function() {
@@ -93,6 +96,12 @@
             
             $('body').append(this.shadow);
             $('body').append(this.el);
+        },
+        
+        destroy: function() {
+            // TODO remove shadow click handler
+            this.shadow.remove();
+            this.remove();
         }
     });
     
