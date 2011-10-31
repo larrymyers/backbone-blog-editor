@@ -72,11 +72,27 @@
     
     var ArticlePreview = Backbone.View.extend({
         
+        initialize: function(options) {
+            $(this.el).addClass('modal');
+            this.shadow = $(this.make('div', { class: 'shadow' }));
+        },
+        
         render: function() {
-            var converter = new Showdown.converter();
-            var html = converter.makeHtml(this.model.get('content'));
+            var converter = new Showdown.converter(),
+                htmlContent = converter.makeHtml(this.model.get('content')),
+                height = $(window).height(),
+                width = $(window).width();
             
-            $('body').append(html);
+            this.shadow.height(height).width(width);
+            
+            $(this.el).html(htmlContent);
+            
+            var centerWidth = width/2 - $(this.el).width()/2;
+            
+            $(this.el).css('left', centerWidth + 'px')
+            
+            $('body').append(this.shadow);
+            $('body').append(this.el);
         }
     });
     
