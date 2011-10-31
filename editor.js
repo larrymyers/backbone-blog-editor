@@ -6,7 +6,8 @@
                 content: '',
                 created_on: new Date(),
                 saved_on: null,
-                published_on: null
+                published_on: null,
+                active: false
             }
         }
     });
@@ -88,7 +89,8 @@
             
             this.shadow.height(height).width(width);
             
-            $(this.el).html(htmlContent);
+            $(this.el).append('<h1>' + this.model.get('title') + '</h1>');
+            $(this.el).append(htmlContent);
             
             var centerWidth = width/2 - $(this.el).width()/2;
             
@@ -163,11 +165,13 @@
         },
         
         createArticle: function() {
-            var article = this.articles.create();
+            var article = this.articles.create({ active: true });
             var view = new ArticleListView({ model: article });
             
             article.bind('edit', this.editView.editArticle, this.editView);
             $('#articles_list').append(view.render().el);
+            
+            view.selectArticle();
         }
     });
     
