@@ -24,7 +24,7 @@ body {
 
 #edit_form {
     width: 617px;
-/*    margin-left: 220px;*/
+    margin: 20px auto;
     text-align: right;
 }
 
