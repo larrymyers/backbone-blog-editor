@@ -1,4 +1,4 @@
-require(['ext/jquery','ext/underscore','ext/backbone','ext/backbone.localStorage','ext/showdown','editor'], function() {
+require(['ext/jquery','ext/underscore','ext/backbone','ext/backbone.localStorage','editor'], function() {
     $(document).ready(function() {
         Backbone.localStorageDB = new Store('editor');
         
