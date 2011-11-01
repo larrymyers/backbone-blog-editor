@@ -150,6 +150,7 @@
         },
         
         selectArticle: function() {
+            localStorage.setItem('activeArticle', this.model.id);
             this.model.trigger('edit', this.model);
         }
     });
@@ -174,6 +175,7 @@
         
         renderArticleList: function() {
             var self = this;
+            var activeId = localStorage.getItem('activeArticle');
             
             $('#articles_list').empty();
             
@@ -182,6 +184,8 @@
                 
                 article.bind('edit', self.editView.editArticle, self.editView);
                 $('#articles_list').append(view.render().el);
+                
+                if (activeId === article.id) { view.selectArticle(); }
             });
         },
         
