@@ -115,6 +115,7 @@
             var centerWidth = width/2 - $(this.el).width()/2;
             
             $(this.el).css('left', centerWidth + 'px').height(height - 90);
+            $(content).height(height - 90);
             
             $('body').append(this.shadow);
             $('body').append(this.el);
