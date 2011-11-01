@@ -24,7 +24,7 @@ body {
 
 #edit_form {
     width: 617px;
-    margin-left: 220px;
+/*    margin-left: 220px;*/
     text-align: right;
 }
 
@@ -63,7 +63,19 @@ input, textarea {
     top: 20px;
     z-index: 1002;
     padding: 20px;
-    width: 425px;
+    width: 625px;
     border-radius: 5px;
+    box-shadow: 0 0 3px 3px #666;
     background-color: #fff;
+}
+
+.modalContent {
+    overflow: auto;
+}
+
+.modalCloseBtn {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    cursor: pointer;
 }

@@ -84,12 +84,18 @@
     
     var ArticlePreview = Backbone.View.extend({
         
+        events: {
+            'click .modalCloseBtn': 'destroy'
+        },
+        
         initialize: function(options) {
             var self = this;
             
-            $(self.el).addClass('modal');
             self.shadow = $(self.make('div', { class: 'shadow' }));
             self.shadow.click(_.bind(self.destroy, self));
+            self.closeBtn = $(self.make('img', { class: 'modalCloseBtn', src: '/close.png' }));
+            
+            $(self.el).addClass('modal').append(self.closeBtn);
         },
         
         render: function() {
@@ -100,12 +106,15 @@
             
             this.shadow.height(height).width(width);
             
-            $(this.el).append('<h1>' + this.model.get('title') + '</h1>');
-            $(this.el).append(htmlContent);
+            var content = this.make('div', { class: 'modalContent' });
+            
+            $(content).append('<h1>' + this.model.get('title') + '</h1>');
+            $(content).append(htmlContent);
+            $(this.el).append(content);
             
             var centerWidth = width/2 - $(this.el).width()/2;
             
-            $(this.el).css('left', centerWidth + 'px')
+            $(this.el).css('left', centerWidth + 'px').height(height - 90);
             
             $('body').append(this.shadow);
             $('body').append(this.el);
