@@ -56,7 +56,6 @@
             if (self.autoSaveId || !self.model) { return; }
             
             self.autoSaveId = setTimeout(function() {
-                console.log('autosaved model ' + self.model.id);
                 self.autoSaveId = null;
                 self.model.save({
                     title: self.$('#article_title').val(),
@@ -66,6 +65,18 @@
         },
         
         editArticle: function(model) {
+            // cleanup previous article before switching
+            if (this.autoSaveId) {
+                clearTimeout(this.autoSaveId);
+                this.autoSaveId = null;
+                
+                this.model.save({
+                    title: this.$('#article_title').val(),
+                    content: this.$('#article_content').val()
+                });
+            }
+            
+            // set the new article to the edit view and re-render
             this.model = model;
             this.render();
         }
