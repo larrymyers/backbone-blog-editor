@@ -20,6 +20,17 @@ body {
 
 #articles_list li {
     cursor: pointer;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+#articles_list li.published {
+    background-color: #F5F5F2;
+    opacity: 0.5;
+}
+
+#articles_list li.selected {
+    background-color: #FFFDC9;
 }
 
 #edit_form {

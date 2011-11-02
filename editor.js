@@ -6,9 +6,12 @@
                 content: '',
                 created_on: new Date(),
                 saved_on: null,
-                published_on: null,
-                active: false
+                published_on: null
             }
+        },
+        
+        published: function() {
+            return this.get('published_on') !== null;
         }
     });
     
@@ -51,7 +54,10 @@
         },
         
         publish: function() {
-            
+            this.model.save({
+                saved_on: new Date(),
+                published_on: new Date()
+            });
         },
         
         autoSave: function() {
@@ -63,7 +69,8 @@
                 self.autoSaveId = null;
                 self.model.save({
                     title: self.$('#article_title').val(),
-                    content: self.$('#article_content').val()
+                    content: self.$('#article_content').val(),
+                    saved_on: new Date()
                 });
             }, 2000);
         },
@@ -76,7 +83,8 @@
                 
                 this.model.save({
                     title: this.$('#article_title').val(),
-                    content: this.$('#article_content').val()
+                    content: this.$('#article_content').val(),
+                    saved_on: new Date()
                 });
             }
             
@@ -104,10 +112,19 @@
         render: function() {
             $(this.el).html(this.model.get('title'));
             
+            if (this.model.published()) {
+                $(this.el).addClass('published');
+            } else {
+                $(this.el).removeClass('published');
+            }
+            
             return this;
         },
         
         selectArticle: function() {
+            $(this.el).siblings('li').removeClass('selected');
+            $(this.el).addClass('selected');
+            
             localStorage.setItem('activeArticle', this.model.id);
             this.model.trigger('edit', this.model);
         }
