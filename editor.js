@@ -114,8 +114,6 @@
             
             if (this.model.published()) {
                 $(this.el).addClass('published');
-            } else {
-                $(this.el).removeClass('published');
             }
             
             return this;
