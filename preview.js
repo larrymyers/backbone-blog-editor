@@ -29,6 +29,7 @@
             $(content).append(htmlContent);
             $(this.el).append(content);
             
+            $(this.el).width(Math.min(width*0.8, 600));
             var centerWidth = width/2 - $(this.el).width()/2;
             
             $(this.el).css('left', centerWidth + 'px').height(height - 90);
