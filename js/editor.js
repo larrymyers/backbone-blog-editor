@@ -10,6 +10,10 @@
             }
         },
         
+        allContent: function() {
+            return '#' + this.get('title') + "\n" + this.get('content');
+        },
+        
         published: function() {
             return this.get('published_on') !== null;
         }
@@ -49,7 +53,7 @@
             var self = this;
             
             require(['ext/showdown','preview'], function() {
-                new MarkdownPreview({ model: self.model }).render();
+                new MarkdownPreview({ content: self.model.allContent() }).render();
             });
         },
         

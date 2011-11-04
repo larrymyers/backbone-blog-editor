@@ -7,16 +7,17 @@ var MarkdownPreview = Backbone.View.extend({
     initialize: function(options) {
         var self = this;
         
+        self.content = options.content || 'No content.';
         self.shadow = $(self.make('div', { class: 'shadow' }));
         self.shadow.click(_.bind(self.destroy, self));
-        self.closeBtn = $(self.make('img', { class: 'modalCloseBtn', src: 'img/close.png' }));
+        self.closeBtn = $(self.make('img', { class: 'modalCloseBtn', src: '/img/close.png' }));
         
         $(self.el).addClass('modal').append(self.closeBtn);
     },
     
     render: function() {
         var converter = new Showdown.converter(),
-            htmlContent = converter.makeHtml(this.model.get('content')),
+            htmlContent = converter.makeHtml(this.content),
             height = $(window).height(),
             width = $(window).width();
         
@@ -24,7 +25,6 @@ var MarkdownPreview = Backbone.View.extend({
         
         var content = this.make('div', { class: 'modalContent' });
         
-        $(content).append('<h1>' + this.model.get('title') + '</h1>');
         $(content).append(htmlContent);
         $(this.el).append(content);
         
