@@ -143,11 +143,26 @@
         },
         
         initialize: function(options) {
-            this.editView = new ArticleEditView();
+            var self = this;
             
-            this.articles.bind('reset', this.renderArticleList, this);
+            self.editView = new ArticleEditView();
             
-            this.articles.fetch();
+            self.articles.bind('reset', self.renderArticleList, self);
+            self.articles.fetch();
+            
+            $(window).resize(function() {
+                self.setContentHeight();
+            });
+            
+            self.setContentHeight();
+        },
+        
+        setContentHeight: function() {
+            var elt = $('#article_content'),
+                wh = $(document).height(),
+                offset = elt.offset();
+            
+            elt.height(wh - offset.top - 60);
         },
         
         renderArticleList: function() {
