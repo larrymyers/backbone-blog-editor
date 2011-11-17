@@ -1,3 +1,5 @@
+/*global $,jQuery,_,Backbone,require,MarkdownPreview*/
+
 (function($) {
     var Article = Backbone.Model.extend({
         defaults: function() {
@@ -7,7 +9,7 @@
                 created_on: new Date(),
                 saved_on: null,
                 published_on: null
-            }
+            };
         },
         
         allContent: function() {
@@ -22,7 +24,7 @@
     var ArticleList = Backbone.Collection.extend({
         model: Article,
         
-        url: '/articles/',
+        url: '/articles/'
     });
     
     /**
