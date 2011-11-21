@@ -1,3 +1,5 @@
+/*global $, _, Backbone, Showdown*/
+
 var MarkdownPreview = Backbone.View.extend({
         
     events: {
@@ -8,9 +10,9 @@ var MarkdownPreview = Backbone.View.extend({
         var self = this;
         
         self.content = options.content || 'No content.';
-        self.shadow = $(self.make('div', { class: 'shadow' }));
+        self.shadow = $(self.make('div', { 'class': 'shadow' }));
         self.shadow.click(_.bind(self.destroy, self));
-        self.closeBtn = $(self.make('img', { class: 'modalCloseBtn', src: '/img/close.png' }));
+        self.closeBtn = $(self.make('img', { 'class': 'modalCloseBtn', src: '/img/close.png' }));
         
         $(self.el).addClass('modal').append(self.closeBtn);
     },
@@ -23,7 +25,7 @@ var MarkdownPreview = Backbone.View.extend({
         
         this.shadow.height(height).width(width);
         
-        var content = this.make('div', { class: 'modalContent' });
+        var content = this.make('div', { 'class': 'modalContent' });
         
         $(content).append(htmlContent);
         $(this.el).append(content);
