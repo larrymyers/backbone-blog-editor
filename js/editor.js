@@ -148,8 +148,11 @@
         },
         
         deleteArticle: function() {
-            this.remove();
-            this.model.destroy();
+            if (confirm('Delete this article?')) {
+                this.remove();
+                this.model.destroy();    
+            }
+        
         }
     });
     
