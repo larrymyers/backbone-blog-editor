@@ -132,6 +132,10 @@
         },
         
         toggleCloseBtn: function() {
+            if (this.model.published()) {
+                return;
+            }
+            
             $(this.closeBtn).toggle();
         },
         
