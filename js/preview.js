@@ -41,7 +41,6 @@ var MarkdownPreview = Backbone.View.extend({
     },
     
     destroy: function() {
-        // TODO remove shadow click handler
         this.shadow.remove();
         this.remove();
     }
