@@ -1,4 +1,4 @@
-/*global $,jQuery,_,Backbone,require,MarkdownPreview*/
+/*global $, jQuery, _, Backbone, require, MarkdownPreview*/
 
 (function($) {
     var Article = Backbone.Model.extend({
@@ -27,9 +27,6 @@
         url: '/articles/'
     });
     
-    /**
-     * View for editing / publishing an article.
-     */
     var ArticleEditView = Backbone.View.extend({
         
         el: '#edit_form',
@@ -108,15 +105,24 @@
         tagName: 'li',
         
         events: {
-            'click': 'selectArticle'
+            'click'    : 'selectArticle',
+            'mouseover': 'toggleCloseBtn',
+            'mouseout' : 'toggleCloseBtn',
+            'click img': 'deleteArticle'
         },
         
         initialize: function(options) {
             this.model.bind('change', this.render, this);
+            
+            this.title = this.make('span');
+            this.closeBtn = this.make('img', { src: 'img/close_sm.png', 'class': 'closeBtn' });
+            
+            $(this.el).append(this.title);
+            $(this.el).append(this.closeBtn);
         },
         
         render: function() {
-            $(this.el).html(this.model.get('title'));
+            $(this.title).html(this.model.get('title'));
             
             if (this.model.published()) {
                 $(this.el).addClass('published');
@@ -125,12 +131,21 @@
             return this;
         },
         
+        toggleCloseBtn: function() {
+            $(this.closeBtn).toggle();
+        },
+        
         selectArticle: function() {
             $(this.el).siblings('li').removeClass('selected');
             $(this.el).addClass('selected');
             
             localStorage.setItem('activeArticle', this.model.id);
             this.model.trigger('edit', this.model);
+        },
+        
+        deleteArticle: function() {
+            this.remove();
+            this.model.destroy();
         }
     });
     

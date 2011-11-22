@@ -30,6 +30,10 @@ body {
     padding: 3px;
 }
 
+#articles_list li img.closeBtn {
+    display: none;
+}
+
 #articles_list li.published {
     color: #999;
 }
