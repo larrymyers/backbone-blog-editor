@@ -16,6 +16,10 @@
             return '#' + this.get('title') + "\n" + this.get('content');
         },
         
+        hasUnpublishedContent: function() {
+            return published_on < saved_on;
+        },
+        
         published: function() {
             return this.get('published_on') !== null;
         }
@@ -44,7 +48,7 @@
         },
         
         render: function() {
-            this.$('#article_title').val(this.model.get('title'));
+            this.$('#article_title').val(this.model.get('title')).attr('disabled', this.model.published());
             this.$('#article_content').val(this.model.get('content'));
         },
         
@@ -105,7 +109,7 @@
         tagName: 'li',
         
         events: {
-            'click'    : 'selectArticle',
+            'click span'    : 'selectArticle',
             'mouseover': 'toggleCloseBtn',
             'mouseout' : 'toggleCloseBtn',
             'click img': 'deleteArticle'
@@ -149,8 +153,8 @@
         
         deleteArticle: function() {
             if (confirm('Delete this article?')) {
+                this.model.destroy();
                 this.remove();
-                this.model.destroy();    
             }
         
         }
@@ -158,7 +162,7 @@
     
     var Editor = Backbone.View.extend({
         
-        el: '#wrapper',
+        el: '#editor',
         
         articles: new ArticleList(),
         

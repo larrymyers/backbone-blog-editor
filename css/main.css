@@ -1,5 +1,5 @@
 body {
-    margin: 0;
+    margin: 20px;
     padding: 0;
     font-family: Helvetica, Arial, Verdana, sans-serif;
     font-size: 13px;
@@ -8,17 +8,8 @@ body {
     background-color: #ffffff;
 }
 
-#wrapper {
-    margin: 20px;
-}
-
-.left_col {
-    float: left;
-    width: 200px;
-    overflow: hidden;
-}
-
 #articles_list {
+    margin: 20px 0;
     padding: 0;
     list-style-type: none;
     list-style-position: outside;
@@ -28,6 +19,7 @@ body {
     cursor: pointer;
     border-radius: 5px;
     padding: 3px;
+    color: #333;
 }
 
 #articles_list li img.closeBtn {
@@ -42,12 +34,6 @@ body {
     background-color: #FFFDC9;
 }
 
-#edit_form {
-    width: 617px;
-    margin: 20px auto;
-    text-align: right;
-}
-
 #actions_bar {
     margin-bottom: 20px;
 }
@@ -55,6 +41,7 @@ body {
 input, textarea {
     display: block;
     width: 600px;
+    color: #333;
 }
 
 #article_title {

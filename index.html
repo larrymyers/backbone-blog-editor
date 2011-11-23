@@ -2,32 +2,29 @@
 <html>
 <head>
     <title>Articles Editor</title>
+    <link href="css/bootstrap.css" media="all" rel="stylesheet" type="text/css"/>
     <link href="css/main.css" media="all" rel="stylesheet" type="text/css"/>
     <link href="css/preview.css" media="all" rel="stylesheet" type="text/css"/>
     <script data-main="js/main" src="js/ext/require.js"></script>
 </head>
 <body>
-    
-    <div id="wrapper">
-        
-        <div class="left_col">
-            <button id="new_article">New Article</button>
+    <div id="editor" class="container-fluid">
+        <div class="sidebar">
+            <button id="new_article" class="btn">New Article</button>
             <ul id="articles_list">
             </ul>
         </div>
-        
-        <div id="edit_form">
+        <div id="edit_form" class="content">
             <div id="actions_bar">
                 <span class="action_buttons">
-                    <button id="preview">Preview</button>
-                    <button id="publish">Publish</button>
+                    <button id="preview" class="btn">Preview</button>
+                    <button id="publish" class="btn">Publish</button>
                 </span>
             </div>
             
             <input type="text" id="article_title" value=""/>
             <textarea id="article_content"></textarea>
         </div>
-        
     </div>
 </body>
 </html>
