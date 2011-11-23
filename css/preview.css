@@ -1,4 +1,4 @@
-.shadow {
+.previewShadow {
     position: absolute;
     top: 0;
     left: 0;
@@ -7,7 +7,7 @@
     background-color: #000;
 }
 
-.modal {
+.previewModal {
     position: absolute;
     top: 20px;
     z-index: 1002;
@@ -17,12 +17,12 @@
     background-color: #fff;
 }
 
-.modalContent {
+.previewContent {
     overflow: auto;
     padding: 0px 5px;
 }
 
-.modalCloseBtn {
+.previewCloseBtn {
     position: absolute;
     top: -17px;
     right: -17px;
