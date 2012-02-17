@@ -1,16 +1,16 @@
-require(
-    [
-        'order!https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js',
-        'order!ext/underscore',
-        'order!ext/backbone',
-        'order!ext/backbone.localStorage',
-        'order!editor'
-    ],
-    function() {
-        $(document).ready(function() {
-            Backbone.localStorageDB = new Store('editor');
-        
-            var App = new Editor();
-        });
-    }
-);
+requirejs.config({
+    paths: {
+        jquery: 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min',
+        backbone: 'ext/backbone',
+        'backbone.localStorage': 'ext/backbone.localStorage',
+        underscore: 'ext/underscore',
+        showdown: 'ext/showdown'
+    },
+    priority: ['jquery']
+});
+
+require(['jquery', 'editor'], function($, Editor) {
+    $(function() {        
+        var App = new Editor();
+    });
+});

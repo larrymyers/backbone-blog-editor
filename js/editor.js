@@ -1,6 +1,6 @@
 /*global $, jQuery, _, Backbone, require, MarkdownPreview*/
 
-(function($) {
+define(['jquery','backbone','backbone.localStorage'], function($, Backbone, Store) {
     var Article = Backbone.Model.extend({
         defaults: function() {
             return {
@@ -27,6 +27,8 @@
     
     var ArticleList = Backbone.Collection.extend({
         model: Article,
+
+        localStorage: new Store('articles'),
         
         url: '/articles/'
     });
@@ -55,7 +57,7 @@
         preview: function() {
             var self = this;
             
-            require(['ext/showdown','preview'], function() {
+            require(['preview'], function(MarkdownPreview) {
                 new MarkdownPreview({ content: self.model.allContent() }).render();
             });
         },
@@ -109,10 +111,10 @@
         tagName: 'li',
         
         events: {
-            'click span'    : 'selectArticle',
-            'mouseover': 'toggleCloseBtn',
-            'mouseout' : 'toggleCloseBtn',
-            'click img': 'deleteArticle'
+            'click span'   : 'selectArticle',
+            'mouseover'    : 'showCloseBtn',
+            'mouseout'     : 'hideCloseBtn',
+            'click img'    : 'deleteArticle'
         },
         
         initialize: function(options) {
@@ -121,8 +123,8 @@
             this.title = this.make('span');
             this.closeBtn = this.make('img', { src: 'img/close_sm.png', 'class': 'closeBtn' });
             
-            $(this.el).append(this.title);
             $(this.el).append(this.closeBtn);
+            $(this.el).append(this.title);
         },
         
         render: function() {
@@ -135,12 +137,16 @@
             return this;
         },
         
-        toggleCloseBtn: function() {
+        showCloseBtn: function() {
             if (this.model.published()) {
                 return;
             }
             
-            $(this.closeBtn).toggle();
+            $(this.closeBtn).show();
+        },
+        
+        hideCloseBtn: function() {
+            $(this.closeBtn).hide();
         },
         
         selectArticle: function() {
@@ -220,5 +226,5 @@
         }
     });
     
-    window.Editor = Editor;
-})(jQuery);
+    return Editor;
+});
