@@ -1,6 +1,6 @@
 /*global $, _, Backbone, Showdown*/
 
-define(['jquery','backbone','showdown'], function($, Backbone) {
+define(['jquery','backbone','showdown'], function($, Backbone, Showdown) {
     return Backbone.View.extend({
             
         events: {
