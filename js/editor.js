@@ -1,5 +1,10 @@
-define(['jquery','backbone','models/articles','views/articleEdit', 'views/articleList'], 
-function($, Backbone, ArticleList, ArticleEditView, ArticleListView) {
+define(['jquery',
+        'backbone',
+        'models/articles',
+        'views/articleEdit', 
+        'views/articleList',
+        'views/articleUpload'], 
+function($, Backbone, ArticleList, ArticleEditView, ArticleListView, ArticleUpload) {
     return Backbone.View.extend({
         
         el: '#editor',
@@ -12,10 +17,12 @@ function($, Backbone, ArticleList, ArticleEditView, ArticleListView) {
         
         initialize: function(options) {
             var self = this;
-            
+
             self.editView = new ArticleEditView();
-            
-            self.articles.bind('reset', self.renderArticleList, self);
+            self.uploadView = new ArticleUpload({ el: '.article_upload', collection: self.articles });
+
+            self.articles.on('add', self.renderArticle, self);
+            self.articles.on('reset', self.renderArticleList, self);
             self.articles.fetch();
             
             $(window).resize(function() {
@@ -32,28 +39,31 @@ function($, Backbone, ArticleList, ArticleEditView, ArticleListView) {
             
             elt.height(wh - offset.top - 60);
         },
+
+        renderArticle: function(article) {
+            var self = this,
+                activeId = localStorage.getItem('activeArticle'),
+                view = new ArticleListView({ model: article });
+                
+            article.on('edit', self.editView.editArticle, self.editView);
+            self.$('#articles_list').append(view.render().el);
+            
+            if (activeId === article.id) { view.selectArticle(); }
+        },
         
         renderArticleList: function() {
             var self = this;
-            var activeId = localStorage.getItem('activeArticle');
             
             $('#articles_list').empty();
             
-            self.articles.each(function(article) {
-                var view = new ArticleListView({ model: article });
-                
-                article.bind('edit', self.editView.editArticle, self.editView);
-                $('#articles_list').append(view.render().el);
-                
-                if (activeId === article.id) { view.selectArticle(); }
-            });
+            self.articles.each(_.bind(self.renderArticle, self));
         },
         
         createArticle: function() {
             var article = this.articles.create({ active: true });
             var view = new ArticleListView({ model: article });
             
-            article.bind('edit', this.editView.editArticle, this.editView);
+            article.on('edit', this.editView.editArticle, this.editView);
             $('#articles_list').append(view.render().el);
             
             view.selectArticle();

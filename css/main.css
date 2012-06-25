@@ -38,7 +38,7 @@ body {
     margin-bottom: 20px;
 }
 
-input, textarea {
+.content input, .content textarea {
     display: block;
     width: 600px;
     color: #333;
@@ -54,4 +54,14 @@ input, textarea {
     padding: 7px;
     min-height: 200px;
     font-size: 13px;
+}
+
+.sidebar label {
+    float: none;
+    text-align: left;
+    display: block;
+}
+
+#upload {
+    display: block;
 }
