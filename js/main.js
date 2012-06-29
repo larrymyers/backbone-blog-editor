@@ -11,6 +11,6 @@ require.config({
 
 require(['jquery', 'editor'], function($, Editor) {
     $(function() {        
-        var App = new Editor();
+        new Editor();
     });
 });
