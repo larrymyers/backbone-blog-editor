@@ -1,3 +1,4 @@
+/*global define*/
 define(['backbone','preview'], function(Backbone, MarkdownPreview) {
     return Backbone.View.extend({
         
@@ -10,7 +11,7 @@ define(['backbone','preview'], function(Backbone, MarkdownPreview) {
             'click #publish': 'publish'
         },
         
-        initialize: function(options) {
+        initialize: function() {
             this.$('#article_title').val('');
             this.$('#article_content').val('');
         },

@@ -1,4 +1,5 @@
-define(['backbone.localStorage', './article'], function(Store, Article) {
+/*global define*/
+define(['backbone', 'backbone.localStorage', './article'], function(Backbone, Store, Article) {
     return Backbone.Collection.extend({
         model: Article,
 

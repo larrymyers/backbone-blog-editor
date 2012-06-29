@@ -1,3 +1,4 @@
+/*global define*/
 define(['backbone'], function(Backbone) {
     return Backbone.Model.extend({
         defaults: function() {
@@ -12,10 +13,6 @@ define(['backbone'], function(Backbone) {
         
         allContent: function() {
             return '#' + this.get('title') + "\n" + this.get('content');
-        },
-        
-        hasUnpublishedContent: function() {
-            return published_on < saved_on;
         },
         
         published: function() {

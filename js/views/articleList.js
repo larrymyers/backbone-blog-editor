@@ -1,3 +1,4 @@
+/*global define, confirm*/
 define(['jquery', 'backbone'], function($, Backbone) {
     return Backbone.View.extend({
         
@@ -10,7 +11,7 @@ define(['jquery', 'backbone'], function($, Backbone) {
             'click img'    : 'deleteArticle'
         },
         
-        initialize: function(options) {
+        initialize: function() {
             this.model.bind('change', this.render, this);
             
             this.title = this.make('span');

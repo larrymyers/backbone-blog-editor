@@ -1,3 +1,4 @@
+/*global define, describe, it, expect*/
 define(['jquery','preview'], function($, MarkdownPreview) {
     describe('MarkdownPreview', function() {
         it('Should be initialized with an object containing the content.', function() {

@@ -1,4 +1,4 @@
-/*global $, _, Backbone, Showdown*/
+/*global define, $, _, Backbone, Showdown*/
 
 define(['jquery','backbone','showdown'], function($, Backbone, Showdown) {
     return Backbone.View.extend({

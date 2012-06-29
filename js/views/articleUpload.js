@@ -1,3 +1,4 @@
+/*global define*/
 define(['underscore',
         'backbone',
         'models/article'], 

@@ -1,10 +1,12 @@
+/*global define*/
 define(['jquery',
+        'underscore',
         'backbone',
         'models/articles',
         'views/articleEdit', 
         'views/articleList',
         'views/articleUpload'], 
-function($, Backbone, ArticleList, ArticleEditView, ArticleListView, ArticleUpload) {
+function($, _, Backbone, ArticleList, ArticleEditView, ArticleListView, ArticleUpload) {
     return Backbone.View.extend({
         
         el: '#editor',
@@ -15,7 +17,7 @@ function($, Backbone, ArticleList, ArticleEditView, ArticleListView, ArticleUplo
             'click #new_article': 'createArticle'
         },
         
-        initialize: function(options) {
+        initialize: function() {
             var self = this;
 
             self.editView = new ArticleEditView();
