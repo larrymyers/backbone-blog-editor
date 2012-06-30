@@ -1,0 +1,14 @@
+load:
+  - ../js/ext/require.js
+  - test.js
+  - jasmine.js
+  - JasmineAdapter.js
+
+test:
+  - specs/*.js
+
+serve:
+  - ../js/ext/*.js
+  - ../js/models/*.js
+  - ../js/views/*.js
+  - ../js/*.js
