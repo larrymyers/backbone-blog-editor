@@ -1,7 +1,7 @@
 /*global require*/
 require.config({
     paths: {
-        jquery: 'ext/jquery-1.7.2.js',
+        jquery: 'ext/jquery-1.7.2',
         backbone: 'ext/backbone',
         'backbone.localStorage': 'ext/backbone.localStorage',
         underscore: 'ext/underscore',
