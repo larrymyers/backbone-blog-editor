@@ -1,7 +1,7 @@
 ({
-    baseUrl: "js",
+    baseUrl: "src/js",
     name: "main",
-    out: "js/app.js",
+    out: "src/js/app.js",
     paths: {
         jquery: "empty:",
         backbone: "ext/backbone",
