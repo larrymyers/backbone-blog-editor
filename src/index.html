@@ -9,25 +9,27 @@
 </head>
 <body>
     <div id="editor" class="container-fluid">
-        <div class="sidebar">
-            <button id="new_article" class="btn">New Article</button>
-            <ul id="articles_list">
-            </ul>
-            <div class="article_upload">
-                <label for="upload">Upload Article</label>
-                <input id="upload" type="file" multiple />
+        <div class="row-fluid">
+            <div class="sidebar span2">
+                <button id="new_article" class="btn">New Article</button>
+                <ul id="articles_list">
+                </ul>
+                <div class="article_upload">
+                    <label for="upload"><i class="icon-file"></i> Upload Article</label>
+                    <input id="upload" type="file" multiple />
+                </div>
             </div>
-        </div>
-        <div id="edit_form" class="content">
-            <div id="actions_bar">
-                <span class="action_buttons">
-                    <button id="preview" class="btn">Preview</button>
-                    <button id="publish" class="btn">Publish</button>
-                </span>
+            <div id="edit_form" class="content span10">
+                <div id="actions_bar">
+                    <span class="action_buttons">
+                        <button id="preview" class="btn">Preview</button>
+                        <button id="publish" class="btn">Publish</button>
+                    </span>
+                </div>
+
+                <input type="text" id="article_title" value=""/>
+                <textarea id="article_content"></textarea>
             </div>
-            
-            <input type="text" id="article_title" value=""/>
-            <textarea id="article_content"></textarea>
         </div>
     </div>
 </body>

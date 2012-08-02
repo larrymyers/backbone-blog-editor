@@ -30,6 +30,8 @@ define(['backbone','preview'], function(Backbone, MarkdownPreview) {
                 saved_on: new Date(),
                 published_on: new Date()
             });
+
+            this.render();
         },
         
         autoSave: function() {

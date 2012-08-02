@@ -62,13 +62,7 @@ function($, _, Backbone, ArticleList, ArticleEditView, ArticleListView, ArticleU
         },
         
         createArticle: function() {
-            var article = this.articles.create({ active: true });
-            var view = new ArticleListView({ model: article });
-            
-            article.on('edit', this.editView.editArticle, this.editView);
-            $('#articles_list').append(view.render().el);
-            
-            view.selectArticle();
+            this.articles.create({ active: true });
         }
     });
 });
